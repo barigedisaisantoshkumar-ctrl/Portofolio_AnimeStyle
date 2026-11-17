@@ -14,18 +14,109 @@
   --font-display: 'Electroharmonix', var(--font-cinzel), Georgia, serif;
   --font-serif:   var(--font-cinzel), Georgia, serif;
 
-  /* Palette */
-  --color-bg:          #0d0d0d;
-  --color-bg-alt:      #111111;
-  --color-surface:     #181818;
-  --color-surface-2:   #1e1e1e;
-  --color-crimson:     #8b0000;
-  --color-crimson-mid: #a30000;
-  --color-crimson-lt:  #c0392b;
+  /* Palette bound to dynamic Breathing Style variables */
+  --color-bg:          var(--breath-bg, #080303);
+  --color-bg-alt:      var(--breath-bg-alt, #120606);
+  --color-surface:     var(--breath-surface, #180a0a);
+  --color-surface-2:   var(--breath-surface-2, #200e0e);
+  --color-crimson:     var(--breath-primary, #8b0000);
+  --color-crimson-mid: var(--breath-primary-mid, #c02626);
+  --color-crimson-lt:  var(--breath-primary-lt, #ff4500);
   --color-ivory:       #f0ece4;
   --color-soft:        #c8c0b4;
   --color-muted:       #7a7268;
-  --color-border:      rgba(139,0,0,0.18);
+  --color-border:      var(--breath-border, rgba(255, 69, 0, 0.25));
+}
+
+/* ── Breathing Style Root Tokens (Default: Flame Breathing Style) ── */
+:root,
+[data-breath="flame"] {
+  --breath-bg:          #080303;
+  --breath-bg-alt:      #120606;
+  --breath-surface:     #180a0a;
+  --breath-surface-2:   #200e0e;
+  --breath-primary:     #8b0000;
+  --breath-primary-mid: #c02626;
+  --breath-primary-lt:  #ff4500;
+  --breath-accent:      #ffaa00;
+  --breath-border:      rgba(255, 69, 0, 0.25);
+  --breath-glow:        rgba(255, 69, 0, 0.5);
+  --breath-seigaiha:    rgba(255, 69, 0, 0.05);
+  --breath-aura:        radial-gradient(ellipse at 50% 15%, rgba(192, 38, 38, 0.28), rgba(255, 85, 0, 0.12) 45%, transparent 75%);
+}
+
+[data-breath="water"] {
+  --breath-bg:          #030710;
+  --breath-bg-alt:      #061020;
+  --breath-surface:     #0a172c;
+  --breath-surface-2:   #10223d;
+  --breath-primary:     #004e7c;
+  --breath-primary-mid: #0077b6;
+  --breath-primary-lt:  #00b4d8;
+  --breath-accent:      #90e0ef;
+  --breath-border:      rgba(0, 180, 216, 0.25);
+  --breath-glow:        rgba(0, 180, 216, 0.5);
+  --breath-seigaiha:    rgba(0, 180, 216, 0.06);
+  --breath-aura:        radial-gradient(ellipse at 50% 15%, rgba(0, 119, 182, 0.28), rgba(0, 180, 216, 0.12) 45%, transparent 75%);
+}
+
+[data-breath="thunder"] {
+  --breath-bg:          #06060c;
+  --breath-bg-alt:      #0f101d;
+  --breath-surface:     #16172a;
+  --breath-surface-2:   #1f213b;
+  --breath-primary:     #b8860b;
+  --breath-primary-mid: #cca01d;
+  --breath-primary-lt:  #ffd700;
+  --breath-accent:      #fff380;
+  --breath-border:      rgba(255, 215, 0, 0.25);
+  --breath-glow:        rgba(255, 215, 0, 0.5);
+  --breath-seigaiha:    rgba(255, 215, 0, 0.05);
+  --breath-aura:        radial-gradient(ellipse at 50% 15%, rgba(184, 134, 11, 0.28), rgba(255, 215, 0, 0.12) 45%, transparent 75%);
+}
+
+[data-breath="insect"] {
+  --breath-bg:          #090410;
+  --breath-bg-alt:      #130822;
+  --breath-surface:     #1c0e30;
+  --breath-surface-2:   #261540;
+  --breath-primary:     #6a1b9a;
+  --breath-primary-mid: #8e24aa;
+  --breath-primary-lt:  #ba68c8;
+  --breath-accent:      #e1bee7;
+  --breath-border:      rgba(186, 104, 200, 0.25);
+  --breath-glow:        rgba(186, 104, 200, 0.5);
+  --breath-seigaiha:    rgba(186, 104, 200, 0.05);
+  --breath-aura:        radial-gradient(ellipse at 50% 15%, rgba(142, 36, 170, 0.28), rgba(186, 104, 200, 0.12) 45%, transparent 75%);
+}
+
+[data-breath="flower"] {
+  --breath-bg:          #0e0308;
+  --breath-bg-alt:      #180610;
+  --breath-surface:     #240a18;
+  --breath-surface-2:   #301022;
+  --breath-primary:     #ad1457;
+  --breath-primary-mid: #c2185b;
+  --breath-primary-lt:  #f06292;
+  --breath-accent:      #fbcfe8;
+  --breath-border:      rgba(240, 98, 146, 0.25);
+  --breath-glow:        rgba(240, 98, 146, 0.5);
+  --breath-seigaiha:    rgba(240, 98, 146, 0.05);
+  --breath-aura:        radial-gradient(ellipse at 50% 15%, rgba(194, 24, 91, 0.28), rgba(240, 98, 146, 0.12) 45%, transparent 75%);
+}
+
+/* ── Smooth Theme Color Transitions ── */
+body, [data-breath], header, nav, main, section, button, a {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.65s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, [data-breath], header, nav, main, section, button, a {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* Force .font-display to always prioritize Electroharmonix */
@@ -55,7 +146,14 @@ html {
   color: var(--color-ivory);
 }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-crimson); border-radius: 3px; }
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-crimson-mid);
+  border-radius: 3px;
+}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { BreathingSelector } from "@/components/BreathingSelector";
 
 interface LandingIntroProps {
   onComplete: () => void;
@@ -58,7 +59,7 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
     };
   }, [onComplete]);
 
-  // Optional keyboard skip (Escape / Space / Enter) without buttons
+  // Optional keyboard skip (Escape / Space / Enter) without any visual buttons
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === " " || e.key === "Enter") {
@@ -79,7 +80,15 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
       onClick={onComplete}
       title="Click anywhere to enter portfolio"
     >
-      {/* Fullscreen Landing Video */}
+      {/* Top-Right Breathing Style Selector */}
+      <div
+        className="absolute top-3 right-3 sm:top-5 sm:right-6 z-50 pointer-events-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <BreathingSelector />
+      </div>
+
+      {/* Fullscreen Video */}
       <video
         ref={videoRef}
         src="/videos/landing.mp4"
@@ -96,11 +105,15 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
         }}
       />
 
-      {/* Sleek bottom crimson progress bar */}
+      {/* Sleek bottom breathing progress bar */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 pointer-events-none z-20">
         <div
-          className="h-full bg-gradient-to-r from-red-800 via-crimson to-amber-500 shadow-[0_0_10px_rgba(192,57,43,0.9)] transition-all duration-100 ease-linear"
-          style={{ width: `${progress}%` }}
+          className="h-full transition-all duration-100 ease-linear"
+          style={{
+            width: `${progress}%`,
+            background: "linear-gradient(to right, var(--breath-primary, #8b0000), var(--breath-primary-lt, #c0392b), var(--breath-accent, #ff7700))",
+            boxShadow: "0 0 10px var(--breath-glow, rgba(192,57,43,0.9))",
+          }}
         />
       </div>
     </motion.div>
