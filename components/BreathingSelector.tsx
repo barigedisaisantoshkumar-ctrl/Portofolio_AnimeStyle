@@ -123,10 +123,10 @@ export function BreathingSelector() {
         </span>
 
         {/* Clear BREATHING STYLE label & selected form name */}
-        <div className="flex items-center gap-1.5 font-medium tracking-[0.08em] uppercase text-[0.7rem] sm:text-[0.74rem]">
-          <span className="text-muted text-[0.65rem] font-mono hidden sm:inline">BREATHING:</span>
-          <span className="text-ivory font-semibold hidden md:inline">{currentStyle.name}</span>
-          <span className="text-ivory font-semibold md:hidden">{currentStyle.shortName} Form</span>
+        <div className="flex items-center gap-1.5 font-display tracking-[0.06em] sm:tracking-[0.08em] uppercase text-[0.74rem] sm:text-[0.8rem]">
+          <span className="text-muted text-[0.68rem] hidden sm:inline opacity-80">BREATHING:</span>
+          <span className="text-ivory font-medium hidden md:inline">{currentStyle.name}</span>
+          <span className="text-ivory font-medium md:hidden">{currentStyle.shortName} Form</span>
         </div>
 
         {/* Chevron Icon */}
@@ -222,7 +222,7 @@ export function BreathingSelector() {
 
                       {/* Accent Description matching user prompt */}
                       <p className="text-[0.72rem] text-muted leading-tight mt-0.5 line-clamp-2">
-                        {style.description}
+                        {style.accentLabel}
                       </p>
                     </div>
                   </li>

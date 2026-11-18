@@ -37,6 +37,17 @@ export function ConnectSection() {
             </a>
 
             <a
+              href={PROFILE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded bg-surface border border-crimson/30 hover:border-crimson hover:bg-surface-2 text-ivory text-xs font-medium tracking-[0.1em] uppercase transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-crimson-lt"
+              aria-label="Instagram Profile (opens in a new tab)"
+            >
+              <span aria-hidden="true" className="text-crimson-lt">📸</span>
+              Instagram
+            </a>
+
+            <a
               href={PROFILE.linkedin}
               target="_blank"
               rel="noopener noreferrer"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { motion } from "motion/react";
 
 interface LandingIntroProps {
@@ -9,7 +9,6 @@ interface LandingIntroProps {
 
 export function LandingIntro({ onComplete }: LandingIntroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [progress, setProgress] = useState(0);
 
   // Attempt initial playback with audio automatically
   useEffect(() => {
@@ -58,21 +57,13 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
     window.addEventListener("keydown", enableAudio, { once: true, passive: true });
     window.addEventListener("wheel", enableAudio, { once: true, passive: true });
 
-    const handleTimeUpdate = () => {
-      if (video.duration) {
-        setProgress((video.currentTime / video.duration) * 100);
-      }
-    };
-
     const handleEnded = () => {
       onComplete();
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
     video.addEventListener("ended", handleEnded);
 
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
       video.removeEventListener("ended", handleEnded);
       cleanupGestureListeners();
     };
@@ -111,14 +102,14 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black overflow-hidden select-none cursor-pointer"
       onClick={handleContainerClick}
     >
-      {/* Fullscreen Cinematic Video */}
+      {/* Fullscreen Cinematic Video: Contained on mobile portrait so full title is visible; covered on desktop */}
       <video
         ref={videoRef}
         src="/videos/landing.mp4"
         autoPlay
         playsInline
         preload="auto"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain sm:object-cover bg-black"
       />
 
       {/* Subtle cinematic vignette */}
@@ -129,19 +120,6 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
             "radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.72) 100%)",
         }}
       />
-
-      {/* Sleek bottom breathing progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 pointer-events-none z-20">
-        <div
-          className="h-full transition-all duration-100 ease-linear"
-          style={{
-            width: `${progress}%`,
-            background:
-              "linear-gradient(to right, var(--breath-primary, #8b0000), var(--breath-primary-lt, #ff4500), var(--breath-accent, #ffaa00))",
-            boxShadow: "0 0 10px var(--breath-glow, rgba(255,69,0,0.9))",
-          }}
-        />
-      </div>
     </motion.div>
   );
 }

@@ -5,7 +5,7 @@ export interface BreathingStyle {
   name: string;
   shortName: string;
   kanji: string;
-  description: string;
+
   accentLabel: string;
   swatchGradient: string;
   badgeBg: string;
@@ -40,7 +40,6 @@ export const BREATHING_STYLES: BreathingStyle[] = [
     name: "Flame Breathing Style",
     shortName: "Flame",
     kanji: "炎",
-    description: "Crimson and ember-orange tones, flowing flame-like brush trails, and small drifting sparks",
     accentLabel: "Crimson & Ember-Orange",
     swatchGradient: "linear-gradient(135deg, #c02626 0%, #ff5500 50%, #ffaa00 100%)",
     badgeBg: "rgba(255, 85, 0, 0.18)",
@@ -79,7 +78,6 @@ export const BREATHING_STYLES: BreathingStyle[] = [
     name: "Water Breathing Style",
     shortName: "Water",
     kanji: "水",
-    description: "Deep blue and cyan tones, flowing wave ribbons, soft ripples, and a few floating droplets",
     accentLabel: "Deep Blue & Cyan",
     swatchGradient: "linear-gradient(135deg, #004e7c 0%, #0077b6 50%, #00b4d8 100%)",
     badgeBg: "rgba(0, 180, 216, 0.18)",
@@ -118,7 +116,6 @@ export const BREATHING_STYLES: BreathingStyle[] = [
     name: "Thunder Breathing Style",
     shortName: "Thunder",
     kanji: "雷",
-    description: "Dark indigo and gold tones, with occasional yellow lightning streaks and brief, non-flashing glows",
     accentLabel: "Dark Indigo & Gold",
     swatchGradient: "linear-gradient(135deg, #b8860b 0%, #cca01d 50%, #ffd700 100%)",
     badgeBg: "rgba(255, 215, 0, 0.18)",
@@ -157,7 +154,6 @@ export const BREATHING_STYLES: BreathingStyle[] = [
     name: "Insect Breathing Style",
     shortName: "Insect",
     kanji: "蟲",
-    description: "Violet and plum tones, with delicate butterflies and tiny glowing pollen-like particles drifting gently",
     accentLabel: "Violet & Plum",
     swatchGradient: "linear-gradient(135deg, #6a1b9a 0%, #8e24aa 50%, #ba68c8 100%)",
     badgeBg: "rgba(186, 104, 200, 0.18)",
@@ -196,7 +192,6 @@ export const BREATHING_STYLES: BreathingStyle[] = [
     name: "Flower Breathing Style",
     shortName: "Flower",
     kanji: "花",
-    description: "Rose and pink tones, with soft light and gently falling petals",
     accentLabel: "Rose & Soft Pink",
     swatchGradient: "linear-gradient(135deg, #ad1457 0%, #c2185b 50%, #f06292 100%)",
     badgeBg: "rgba(240, 98, 146, 0.18)",

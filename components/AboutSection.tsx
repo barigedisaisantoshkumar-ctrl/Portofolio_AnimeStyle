@@ -1,4 +1,4 @@
-import { PROFILE, EDUCATION, SKILLS } from "@/lib/data";
+import { PROFILE, EDUCATION_LIST, SKILLS } from "@/lib/data";
 import { FadeUp, StaggerGrid, StaggerItem } from "@/components/Reveal";
 
 export function AboutSection() {
@@ -57,16 +57,46 @@ export function AboutSection() {
           </StaggerGrid>
         </div>
 
-        {/* Education */}
+        {/* Education & Schooling Timeline */}
         <FadeUp delay={0.15}>
-          <div className="flex items-start gap-4 bg-surface border border-l-[3px] border-crimson/15 border-l-crimson rounded-lg px-5 py-4">
-            <span className="text-2xl flex-shrink-0 mt-0.5" aria-hidden="true">🎓</span>
-            <div>
-              <h3 className="text-ivory font-semibold text-[1rem]">{EDUCATION.degree}</h3>
-              <p className="text-soft text-[0.88rem] mt-0.5">{EDUCATION.institute}</p>
-              <p className="text-muted text-[0.78rem] mt-1">
-                {EDUCATION.period} &nbsp;·&nbsp; CGPA: {EDUCATION.cgpa}
-              </p>
+          <div className="space-y-3.5">
+            <h3 className="text-[0.68rem] tracking-[0.2em] uppercase text-crimson-lt font-semibold mb-2">
+              Education & Academic Background
+            </h3>
+            <div className="grid grid-cols-1 gap-3.5">
+              {EDUCATION_LIST.map((edu, idx) => (
+                <div
+                  key={edu.degree}
+                  className="flex items-start gap-4 bg-surface border border-l-[3px] border-crimson/15 border-l-crimson rounded-lg px-5 py-4 transition-all duration-200 hover:border-crimson/30 hover:bg-surface-2"
+                >
+                  <span className="text-2xl flex-shrink-0 mt-0.5" aria-hidden="true">
+                    {edu.icon || "🎓"}
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h4 className="text-ivory font-semibold text-[0.98rem] tracking-wide">
+                        {edu.degree}
+                      </h4>
+                      <span className="text-[0.72rem] font-mono text-muted tracking-wider px-2 py-0.5 rounded bg-white/5 border border-white/5">
+                        {edu.period}
+                      </span>
+                    </div>
+                    <p className="text-crimson-lt font-medium text-[0.85rem] mt-0.5">
+                      {edu.institute}
+                    </p>
+                    {edu.score && (
+                      <p className="text-muted text-[0.78rem] mt-1 font-mono">
+                        {edu.score}
+                      </p>
+                    )}
+                    {edu.description && (
+                      <p className="text-soft text-[0.82rem] mt-1.5 leading-relaxed">
+                        {edu.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </FadeUp>

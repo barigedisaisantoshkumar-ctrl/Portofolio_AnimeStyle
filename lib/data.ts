@@ -15,17 +15,48 @@ export const PROFILE = {
   summary:
     "CSE (Cyber Security) student at MVGR College of Engineering, building production-grade web apps, ServiceNow scoped applications, and API security tools. Available for internships and junior engineering roles.",
   email: "barigedisaisantoshkumar@gmail.com",
+  instagram: "https://www.instagram.com/sai_santosh_13/",
   linkedin: "https://www.linkedin.com/in/santosh-barigedi/",
   github: "https://github.com/barigedisaisantoshkumar-ctrl/",
   liveSite: "https://santoshbarigedi.vercel.app/",
 };
 
-export const EDUCATION = {
-  degree: "B.Tech — CSE (Cyber Security)",
-  institute: "MVGR College of Engineering, Vizianagaram",
-  period: "2023 – Present",
-  cgpa: "6.92 / 10.0",
-};
+export interface EducationItem {
+  degree: string;
+  institute: string;
+  period: string;
+  score?: string;
+  description?: string;
+  icon?: string;
+}
+
+export const EDUCATION_LIST: EducationItem[] = [
+  {
+    degree: "B.Tech — CSE (Cyber Security)",
+    institute: "MVGR College of Engineering, Vizianagaram",
+    period: "2023 – Present",
+    score: "CGPA: 6.92 / 10.0",
+    icon: "🎓",
+  },
+  {
+    degree: "Intermediate (MPC)",
+    institute: "Narayana Junior College",
+    period: "Apr 2020 – Mar 2022",
+    description:
+      "Rigorous focus on Mathematics, Physics, and Chemistry, laying solid analytical and mathematical problem-solving fundamentals.",
+    icon: "📖",
+  },
+  {
+    degree: "Secondary Schooling",
+    institute: "Narayana Olympiad School",
+    period: "June 2016 – Feb 2020",
+    description:
+      "Built strong academic foundations and logical thinking throughout standard 6th to 10th grade schooling.",
+    icon: "🏫",
+  },
+];
+
+export const EDUCATION = EDUCATION_LIST[0];
 
 export const SKILLS: { group: string; items: string[] }[] = [
   { group: "Web & Frameworks",   items: ["HTML · CSS · JavaScript", "React · Node.js · Express", "REST APIs · JWT Auth", "Responsive Design"] },
@@ -128,7 +159,6 @@ export const CERTIFICATES: {
   { issuer: "ReactJS",                  name: "ReactJS",                                              category: "dev",        file: "ReactJS.pdf" },
   { issuer: "Cisco Networking Academy", name: "Introduction to Modern AI",                            category: "dev",        file: "Introduction_to_Modern_AI.pdf" },
   { issuer: "Apply AI",                 name: "Apply AI: Analyze Customer Reviews",                   category: "dev",        file: "Apply_AI-_Analyze_Customer_Reviews.pdf" },
-  { issuer: "KPMG Hackathon",           name: "KPMG Hackathon — Top 50 Teams (India)",                category: "dev",        file: "SAI SANTOSH-345585001.pdf" },
 ];
 
 export const CERT_CATEGORIES: { key: CertCategory | "all"; label: string }[] = [

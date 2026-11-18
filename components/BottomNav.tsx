@@ -173,7 +173,7 @@ export function BottomNav() {
         >
           <a
             href="#hero"
-            className="flex items-center gap-2 sm:gap-3 font-sans font-medium text-[0.72rem] sm:text-[0.78rem] tracking-[0.16em] sm:tracking-[0.2em] uppercase text-ivory hover:text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-crimson-lt rounded"
+            className="flex items-center gap-2 sm:gap-3 font-display font-medium text-[0.78rem] sm:text-[0.88rem] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-ivory hover:text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-crimson-lt rounded"
             aria-label="Santosh Barigedi — back to top"
             onClick={(e) => {
               e.preventDefault();
@@ -184,7 +184,7 @@ export function BottomNav() {
               className="inline-block w-[3px] h-[1.15em] bg-crimson-lt flex-shrink-0 shadow-[0_0_8px_rgba(255,69,0,0.7)]"
               aria-hidden="true"
             />
-            <span className="truncate max-w-[130px] sm:max-w-none">SANTOSH BARIGEDI</span>
+            <span className="truncate max-w-[150px] sm:max-w-none">SANTOSH BARIGEDI</span>
           </a>
         </motion.div>
 
