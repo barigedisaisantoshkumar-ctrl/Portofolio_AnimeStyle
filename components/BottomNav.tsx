@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BreathingSelector } from "@/components/BreathingSelector";
+import { NezukoRunner } from "@/components/NezukoRunner";
 
 const NAV_LINKS = [
   { id: "about",      label: "About Me",   href: "#about" },
@@ -15,6 +16,12 @@ export function BottomNav() {
   const [active, setActive] = useState("about");
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0); // 0 (about) to 3 (connect)
+
+  // Track page-wide scroll progress and direction for Nezuko & Zenitsu runners
+  const [runnerProgress, setRunnerProgress] = useState(0);
+  const [runnerDirection, setRunnerDirection] = useState<"right" | "left">("right");
+  const [runnerScrollY, setRunnerScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   const listRef = useRef<HTMLUListElement>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -118,6 +125,18 @@ export function BottomNav() {
 
       setScrollProgress(prog);
       updateLine(prog);
+
+      // Update page-wide scroll progress and direction for the runners
+      const docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const overallProgress = Math.min(1, Math.max(0, scrollY / docHeight));
+      setRunnerProgress(overallProgress);
+      setRunnerScrollY(scrollY);
+
+      const delta = scrollY - lastScrollYRef.current;
+      if (Math.abs(delta) >= 1) {
+        setRunnerDirection(delta > 0 ? "right" : "left");
+        lastScrollYRef.current = scrollY;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -204,6 +223,13 @@ export function BottomNav() {
         }}
         aria-label="Site navigation"
       >
+        {/* Nezuko & Zenitsu Runners — Grounded directly on top of the navbar ledge */}
+        <NezukoRunner
+          progress={runnerProgress}
+          direction={runnerDirection}
+          scrollY={runnerScrollY}
+        />
+
         <div className="relative">
           <ul
             ref={listRef}
