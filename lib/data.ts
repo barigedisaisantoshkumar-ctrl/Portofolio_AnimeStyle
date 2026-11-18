@@ -18,7 +18,7 @@ export const PROFILE = {
   instagram: "https://www.instagram.com/sai_santosh_13/",
   linkedin: "https://www.linkedin.com/in/santosh-barigedi/",
   github: "https://github.com/barigedisaisantoshkumar-ctrl/",
-  liveSite: "https://santoshbarigedi.vercel.app/",
+  liveSite: "https://santoshbuilds.vercel.app/",
 };
 
 export interface EducationItem {
