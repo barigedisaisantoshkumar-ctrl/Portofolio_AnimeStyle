@@ -102,14 +102,14 @@ export function LandingIntro({ onComplete }: LandingIntroProps) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black overflow-hidden select-none cursor-pointer"
       onClick={handleContainerClick}
     >
-      {/* Fullscreen Cinematic Video: Contained on mobile portrait so full title is visible; covered on desktop */}
+      {/* Fullscreen Cinematic Video */}
       <video
         ref={videoRef}
         src="/videos/landing.mp4"
         autoPlay
         playsInline
         preload="auto"
-        className="w-full h-full object-contain sm:object-cover bg-black"
+        className="w-full h-full object-cover"
       />
 
       {/* Subtle cinematic vignette */}
